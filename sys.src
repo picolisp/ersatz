@@ -1,4 +1,4 @@
-// 20aug25 Software Lab. Alexander Burger
+// 05may26 Software Lab. Alexander Burger
 
 import java.util.*;
 import java.math.*;
@@ -2872,7 +2872,7 @@ public class PicoLisp {
             if (!((x = x.Cdr) instanceof Cell))
                return n;
             if (mark.contains(x))
-               return -1;
+               return -n;
          }
       }
 

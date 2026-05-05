@@ -1,4 +1,4 @@
-# 20aug25 Software Lab. Alexander Burger
+# 05may26 Software Lab. Alexander Burger
 
 # Ersatz PicoLisp Functions
 
@@ -1090,7 +1090,11 @@ extra (x y z)
    Env.Key = z;  Env.Cls = y;
    return x;
 
-# (with 'sym . prg) -> any
+# (this 'any) -> any
+this ()
+   return This.Car = ex.Cdr.Car.eval();
+
+# (with 'any . prg) -> any
 with (x bnd)
    if ((x = ex.Cdr.Car.eval()) != Nil) {
       (bnd = new Bind()).add(This.Car);
@@ -3040,7 +3044,10 @@ prior (x y)
 
 # (length 'any) -> cnt | T
 length (n)
-   return (n = ex.Cdr.Car.eval().length()) >= 0? new Number(n) : T;
+   if ((n = ex.Cdr.Car.eval().length()) >= 0)
+      return new Number(n);
+   At2.Car = new Number(-n);
+   return T;
 
 # (size 'any) -> cnt
 size ()
